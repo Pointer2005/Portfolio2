@@ -1,25 +1,29 @@
-
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { siteConfig } from "@/config/site";
 
 export default function Layout() {
+  const location = useLocation();
+  
+  const getPageTitle = () => {
+    const path = location.pathname;
+    if (path === '/') return siteConfig.title;
+    const title = path.replace('/', '').charAt(0).toUpperCase() + path.slice(2);
+    return `${title} | ${siteConfig.name}`;
+  };
+
   return (
-    // bg-background text-foreground ensures the background color changes globally using shadcn colors
     <div className="flex min-h-screen flex-col bg-background text-foreground transition-colors duration-300">
-      
-      {/* Our newly created Navbar */}
+      <Helmet>
+        <title>{getPageTitle()}</title>
+        <meta name="description" content={siteConfig.description} />
+      </Helmet>
       <Navbar />
-      
-      {/* The main content area where your pages load */}
-      <main className="flex-1 container mx-auto px-4 md:px-8 py-12">
+      <main className="flex-1 container mx-auto px-4 md:px-8 py-12 mt-16">
         <Outlet /> 
       </main>
-      
-      {/* We will build a real Footer later */}
-      {/* <footer className="border-t p-4 text-center text-sm text-muted-foreground">
-        © {new Date().getFullYear()} My Portfolio
-      </footer>*/}
       <Footer/>
     </div>
   );
