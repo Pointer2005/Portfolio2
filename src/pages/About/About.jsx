@@ -3,7 +3,7 @@ import { useState } from "react";
 import { siteConfig } from "@/config/site";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import bhaskarImg from "@/assets/bhaskar.jpg";
+import bhaskarImg from "@/assets/IMG-20250505-WA0062.jpg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
