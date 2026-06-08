@@ -9,9 +9,9 @@ import {
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "@/components/common/ThemeToggle";
-// import MobileMenu from "./MobileMenu";
 import { cn } from "@/lib/utils";
 import { navLinks } from "@/config/navigation";
+import MobileMenu from "./MobileMenu";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -129,7 +129,7 @@ export default function Navbar() {
       </motion.header>
 
       {/* Mobile Menu Drawer */}
-      {/* <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />*/}
+      <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
     </>
   );
 }
