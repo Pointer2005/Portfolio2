@@ -53,16 +53,16 @@ export default function Navbar() {
         animate={hidden ? "hidden" : "visible"}
         transition={{ duration: 0.35, ease: "easeInOut" }}
         className={cn(
-          "fixed top-4 left-0 right-0 z-50 mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8",
+          "fixed top-4 left-0 right-0 z-50 mx-auto w-full px-4 sm:px-6 lg:px-8 duration-500",
           scrolled ? "px-0 w-[95%] sm:w-[85%]" : "w-full",
         )}
       >
-        <div className="glass shadow-lg transition-all duration-500 border-b">
+        <div className="glass shadow-lg transition-all duration-500 border-b rounded-full">
           <div className="flex items-center justify-between h-14 px-6">
             {/* Logo */}
             <Link to="/" className="flex items-center group">
-              <span className="font-heading font-semibold text-foreground group-hover:text-primary transition-colors text-lg tracking-tight">
-                FCK
+              <span className="font-heading font-semibold text-white group-hover:text-primary transition-colors text-lg tracking-tight">
+                Bhaskar
               </span>
             </Link>
 

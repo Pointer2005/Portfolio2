@@ -4,6 +4,7 @@ import { Heart, Mail } from "lucide-react";
 // import SocialLinks from "@/components/common/SocialLinks";
 import { navLinks } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
+import SocialLinks from "../common/SocialLinks";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -60,7 +61,7 @@ export default function Footer() {
             <h3 className="text-sm font-semibold text-foreground tracking-wide uppercase font-mono">
               Connect
             </h3>
-            {/* <SocialLinks size="md" />*/}
+            <SocialLinks size="md" />
             <a
               href={`mailto:${siteConfig.email}`}
               className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors duration-200"
