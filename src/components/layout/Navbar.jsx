@@ -57,7 +57,7 @@ export default function Navbar() {
           scrolled ? "px-0 w-[95%] sm:w-[85%]" : "w-full",
         )}
       >
-        <div className="glass shadow-lg transition-all duration-500 border-b rounded-full">
+        <div className="glass shadow-lg transition-all duration-500 border-b rounded-full  backdrop-blur-2xl">
           <div className="flex items-center justify-between h-14 px-6">
             {/* Logo */}
             <Link to="/" className="flex items-center group">

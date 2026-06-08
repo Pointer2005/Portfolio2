@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { siteConfig } from "@/config/site";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import bhaskarImg from "@/assets/bhaskar.jpg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -22,6 +24,9 @@ const slideIn = {
 };
 
 function About() {
+  const [isRevealed, setIsRevealed] = useState(false);
+  const githubImg = `https://github.com/${siteConfig.githubUsername}.png`;
+
   const education = [
     {
       degree: "Bachelor of Technology in Computer Science",
@@ -66,12 +71,66 @@ function About() {
           <motion.div variants={slideIn} className="flex justify-center lg:justify-end">
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-primary to-blue-600 rounded-[2rem] blur-xl opacity-25 group-hover:opacity-60 transition duration-1000 group-hover:duration-200"></div>
-              <Card className="relative p-2 bg-white/5 border-white/10 backdrop-blur-md rounded-[2rem] overflow-hidden">
-                <img
-                  src={`https://github.com/${siteConfig.githubUsername}.png`}
-                  alt={`${siteConfig.name}'s profile`}
-                  className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 object-cover rounded-3xl shadow-2xl bg-black/20"
-                />
+              <Card 
+                className="relative p-2 bg-white/5 border-white/10 backdrop-blur-md rounded-[2rem] overflow-hidden cursor-pointer"
+                onClick={() => setIsRevealed(!isRevealed)}
+                title="Click to reveal!"
+              >
+                <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
+                  {/* Revealed Image (Behind) */}
+                  <motion.img
+                    src={bhaskarImg}
+                    alt="Bhaskar"
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: isRevealed ? 1 : 0.8, opacity: isRevealed ? 1 : 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="absolute inset-0 w-full h-full object-cover rounded-3xl shadow-2xl bg-black/20"
+                  />
+
+                  {/* Top Image (Top Left) */}
+                  <motion.div
+                    initial={{ x: 0, y: 0, opacity: 1, rotate: 0 }}
+                    animate={{ x: isRevealed ? -60 : 0, y: isRevealed ? -60 : 0, opacity: isRevealed ? 0 : 1, rotate: isRevealed ? -15 : 0 }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    className="absolute inset-0 w-full h-full z-10"
+                    style={{ clipPath: "polygon(0 0, 50% 0, 50% 50%, 0 50%)" }}
+                  >
+                    <img src={githubImg} alt="profile" className="w-full h-full object-cover rounded-3xl shadow-2xl bg-black/20 pointer-events-none" />
+                  </motion.div>
+
+                  {/* Top Image (Top Right) */}
+                  <motion.div
+                    initial={{ x: 0, y: 0, opacity: 1, rotate: 0 }}
+                    animate={{ x: isRevealed ? 60 : 0, y: isRevealed ? -60 : 0, opacity: isRevealed ? 0 : 1, rotate: isRevealed ? 15 : 0 }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    className="absolute inset-0 w-full h-full z-10"
+                    style={{ clipPath: "polygon(50% 0, 100% 0, 100% 50%, 50% 50%)" }}
+                  >
+                    <img src={githubImg} alt="profile" className="w-full h-full object-cover rounded-3xl shadow-2xl bg-black/20 pointer-events-none" />
+                  </motion.div>
+
+                  {/* Top Image (Bottom Left) */}
+                  <motion.div
+                    initial={{ x: 0, y: 0, opacity: 1, rotate: 0 }}
+                    animate={{ x: isRevealed ? -60 : 0, y: isRevealed ? 60 : 0, opacity: isRevealed ? 0 : 1, rotate: isRevealed ? -15 : 0 }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    className="absolute inset-0 w-full h-full z-10"
+                    style={{ clipPath: "polygon(0 50%, 50% 50%, 50% 100%, 0 100%)" }}
+                  >
+                    <img src={githubImg} alt="profile" className="w-full h-full object-cover rounded-3xl shadow-2xl bg-black/20 pointer-events-none" />
+                  </motion.div>
+
+                  {/* Top Image (Bottom Right) */}
+                  <motion.div
+                    initial={{ x: 0, y: 0, opacity: 1, rotate: 0 }}
+                    animate={{ x: isRevealed ? 60 : 0, y: isRevealed ? 60 : 0, opacity: isRevealed ? 0 : 1, rotate: isRevealed ? 15 : 0 }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    className="absolute inset-0 w-full h-full z-10"
+                    style={{ clipPath: "polygon(50% 50%, 100% 50%, 100% 100%, 50% 100%)" }}
+                  >
+                    <img src={githubImg} alt="profile" className="w-full h-full object-cover rounded-3xl shadow-2xl bg-black/20 pointer-events-none" />
+                  </motion.div>
+                </div>
               </Card>
             </div>
           </motion.div>
