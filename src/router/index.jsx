@@ -19,6 +19,8 @@ const router = createBrowserRouter([
       { path: ROUTES.CONTACT, element: <Contact /> },
     ],
   },
-]);
+], {
+  basename: import.meta.env.BASE_URL
+});
 
 export default router;
