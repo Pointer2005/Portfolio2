@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { navLinks } from "@/config/navigation";
+import SocialLinks from "../common/SocialLinks";
 
 const backdropVariants = {
   hidden: { opacity: 0 },
