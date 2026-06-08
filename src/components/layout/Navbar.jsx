@@ -9,9 +9,9 @@ import {
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "@/components/common/ThemeToggle";
-// import MobileMenu from "./MobileMenu";
 import { cn } from "@/lib/utils";
 import { navLinks } from "@/config/navigation";
+import MobileMenu from "./MobileMenu";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -57,11 +57,11 @@ export default function Navbar() {
           scrolled ? "px-0 w-[95%] sm:w-[85%]" : "w-full",
         )}
       >
-        <div className="glass shadow-lg transition-all duration-500 border-b rounded-full">
+        <div className="glass shadow-lg transition-all duration-500 border-b rounded-full  backdrop-blur-2xl">
           <div className="flex items-center justify-between h-14 px-6">
             {/* Logo */}
             <Link to="/" className="flex items-center group">
-              <span className="font-heading font-semibold text-white group-hover:text-primary transition-colors text-lg tracking-tight">
+              <span className="font-heading font-semibold group-hover:text-primary transition-colors text-lg tracking-tight">
                 Bhaskar
               </span>
             </Link>
@@ -129,7 +129,7 @@ export default function Navbar() {
       </motion.header>
 
       {/* Mobile Menu Drawer */}
-      {/* <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />*/}
+      <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
     </>
   );
 }
