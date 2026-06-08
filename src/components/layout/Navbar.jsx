@@ -61,7 +61,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-14 px-6">
             {/* Logo */}
             <Link to="/" className="flex items-center group">
-              <span className="font-heading font-semibold text-white group-hover:text-primary transition-colors text-lg tracking-tight">
+              <span className="font-heading font-semibold group-hover:text-primary transition-colors text-lg tracking-tight">
                 Bhaskar
               </span>
             </Link>
